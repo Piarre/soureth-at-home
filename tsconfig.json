@@ -1,0 +1,3 @@
+{
+  "extends": "@soureth-at-home/config/tsconfig.base.json"
+}

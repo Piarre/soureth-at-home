@@ -1,0 +1,24 @@
+{
+  "name": "@soureth-at-home/auth",
+  "type": "module",
+  "exports": {
+    ".": {
+      "default": "./src/index.ts"
+    },
+    "./*": {
+      "default": "./src/*.ts"
+    }
+  },
+  "scripts": {},
+  "dependencies": {
+    "@soureth-at-home/db": "workspace:*",
+    "@soureth-at-home/env": "workspace:*",
+    "better-auth": "catalog:",
+    "dotenv": "catalog:",
+    "zod": "catalog:"
+  },
+  "devDependencies": {
+    "@soureth-at-home/config": "workspace:*",
+    "typescript": "catalog:"
+  }
+}
