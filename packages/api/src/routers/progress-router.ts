@@ -61,12 +61,7 @@ export const progressRouter = router({
       db
         .select({ count: count() })
         .from(userProgress)
-        .where(
-          and(
-            eq(userProgress.userId, ctx.session.user.id),
-            // completedAt is not null means lesson was completed
-          ),
-        ),
+        .where(eq(userProgress.userId, ctx.session.user.id)),
       db.select({ count: count() }).from(lessons),
     ]);
 

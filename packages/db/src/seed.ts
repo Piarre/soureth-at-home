@@ -141,7 +141,6 @@ Félicitations ! Vous connaissez maintenant les 22 lettres de l'alphabet syriaqu
 ];
 
 const VOCABULARY = [
-  // Salutations
   {
     id: "v-shlama",
     sourethWord: "ܫܠܵܡܵܐ",
@@ -178,7 +177,6 @@ const VOCABULARY = [
     category: "greetings" as const,
     lessonId: null,
   },
-  // Famille
   {
     id: "v-awa",
     sourethWord: "ܐܵܒ݂ܵܐ",
@@ -233,7 +231,6 @@ const VOCABULARY = [
     category: "family" as const,
     lessonId: "lesson-2",
   },
-  // Chiffres
   {
     id: "v-khad",
     sourethWord: "ܚܲܕ",
@@ -324,7 +321,6 @@ const VOCABULARY = [
     category: "numbers" as const,
     lessonId: "lesson-3",
   },
-  // Nourriture
   {
     id: "v-lakhma",
     sourethWord: "ܠܲܚܡܵܐ",
@@ -352,7 +348,6 @@ const VOCABULARY = [
     category: "food" as const,
     lessonId: null,
   },
-  // Nature
   {
     id: "v-shimsha",
     sourethWord: "ܫܸܡܫܵܐ",
@@ -380,7 +375,6 @@ const VOCABULARY = [
     category: "nature" as const,
     lessonId: null,
   },
-  // Verbes
   {
     id: "v-azal",
     sourethWord: "ܐܵܙܲܠ",
@@ -408,7 +402,6 @@ const VOCABULARY = [
     category: "verbs" as const,
     lessonId: null,
   },
-  // Adjectifs
   {
     id: "v-tawa",
     sourethWord: "ܛܵܒ݂ܵܐ",
@@ -427,7 +420,6 @@ const VOCABULARY = [
     category: "adjectives" as const,
     lessonId: null,
   },
-  // Phrases
   {
     id: "v-alaha",
     sourethWord: "ܐܲܠܵܗܵܐ",
@@ -449,30 +441,16 @@ const VOCABULARY = [
 ];
 
 async function seed() {
-  console.log("🌱 Seeding database...");
-
-  // Insert lessons
-  console.log("📖 Inserting lessons...");
   for (const lesson of LESSONS) {
-    await db
-      .insert(schema.lessons)
-      .values(lesson)
-      .onConflictDoNothing();
+    await db.insert(schema.lessons).values(lesson).onConflictDoNothing();
   }
 
-  // Insert vocabulary
-  console.log("💬 Inserting vocabulary...");
   for (const item of VOCABULARY) {
-    await db
-      .insert(schema.vocabularyItems)
-      .values(item)
-      .onConflictDoNothing();
+    await db.insert(schema.vocabularyItems).values(item).onConflictDoNothing();
   }
-
-  console.log(`✅ Seeded ${LESSONS.length} lessons and ${VOCABULARY.length} vocabulary items`);
 }
 
 seed().catch((err) => {
-  console.error("❌ Seed failed:", err);
+  console.error(err);
   process.exit(1);
 });

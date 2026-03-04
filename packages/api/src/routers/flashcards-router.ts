@@ -6,7 +6,6 @@ import { flashcardReviews, vocabularyItems } from "@soureth-at-home/db/schema";
 
 import { protectedProcedure, router } from "../index";
 
-// Algorithme SM-2 simplifié
 function calculateNextReview(
   rating: number,
   easeFactor: number,

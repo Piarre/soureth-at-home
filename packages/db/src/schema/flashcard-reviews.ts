@@ -12,14 +12,13 @@ export const flashcardReviews = sqliteTable("flashcard_reviews", {
   vocabularyItemId: text("vocabulary_item_id")
     .notNull()
     .references(() => vocabularyItems.id, { onDelete: "cascade" }),
-  // Algorithme de répétition espacée (simplifié SM-2)
   easeFactor: real("ease_factor").default(2.5).notNull(),
-  interval: integer("interval").default(1).notNull(), // jours
+  interval: integer("interval").default(1).notNull(),
   repetitions: integer("repetitions").default(0).notNull(),
   nextReviewAt: integer("next_review_at", { mode: "timestamp_ms" })
     .default(sql`(cast(unixepoch('subsecond') * 1000 as integer))`)
     .notNull(),
-  lastRating: integer("last_rating"), // 0-5
+  lastRating: integer("last_rating"),
   createdAt: integer("created_at", { mode: "timestamp_ms" })
     .default(sql`(cast(unixepoch('subsecond') * 1000 as integer))`)
     .notNull(),

@@ -1,7 +1,3 @@
--- Seed data for Soureth Learning App
--- Run with: wrangler d1 execute <db-name> --local --file=packages/db/src/seed.sql
-
--- Lessons
 INSERT OR IGNORE INTO lessons (id, title, description, "order", category, content, created_at) VALUES
 (
   'lesson-1',
@@ -46,10 +42,6 @@ Les parents proches :
 ܒܪܵܐ (bra) — fils
 ܒܪܵܬ݂ܵܐ (brata) — fille
 
-Les grands-parents :
-ܣܸܕ݂ܵܐ (sida) — grand-père (paternel)
-ܚܵܠܵܐ (khala) — grand-père (maternel)
-
 Exemple de phrase :
 ܐܵܒ݂ܝ ܫܡܹܗ ܝܵܘܣܸܦ — Mon père s''appelle Joseph',
   strftime('%s', 'now') * 1000
@@ -60,9 +52,7 @@ Exemple de phrase :
   'Comptez en Soureth',
   3,
   'vocabulary',
-  'Les chiffres sont fondamentaux dans toute langue. Voici les chiffres de 1 à 10 en Soureth :
-
-1 — ܚܲܕ (khad) — un
+  '1 — ܚܲܕ (khad) — un
 2 — ܬܪܹܝ (trey) — deux
 3 — ܬܠܵܬ݂ (tlat) — trois
 4 — ܐܲܪܒܲܥ (arba) — quatre
@@ -71,9 +61,7 @@ Exemple de phrase :
 7 — ܫܒ݂ܲܥ (shwa) — sept
 8 — ܬܡܵܢܝܵܐ (tmanya) — huit
 9 — ܬܫܲܥ (tsha) — neuf
-10 — ܥܣܵܪ (sar) — dix
-
-Astuce : Les chiffres araméens ont souvent des racines similaires aux chiffres hébreux et arabes !',
+10 — ܥܣܵܪ (sar) — dix',
   strftime('%s', 'now') * 1000
 ),
 (
@@ -82,9 +70,9 @@ Astuce : Les chiffres araméens ont souvent des racines similaires aux chiffres 
   'Découvrez les 11 premières lettres de l''alphabet',
   4,
   'alphabet',
-  'L''alphabet syriaque comporte 22 lettres consonantiques. Il s''écrit de droite à gauche.
+  'L''alphabet syriaque comporte 22 lettres. Il s''écrit de droite à gauche.
 
-ܐ Alaph — /ʔ/ ou /a/ — comme le "coup de glotte"
+ܐ Alaph — /ʔ/ ou /a/
 ܒ Beth — /b/ ou /v/
 ܓ Gamal — /g/
 ܕ Dalath — /d/
@@ -92,11 +80,9 @@ Astuce : Les chiffres araméens ont souvent des racines similaires aux chiffres 
 ܘ Waw — /w/ ou /u/
 ܙ Zayn — /z/
 ܚ Heth — /ħ/ — son guttural
-ܛ Teth — /tˤ/ — "t" emphatique
+ܛ Teth — /tˤ/
 ܝ Yodh — /j/ ou /i/
-ܟ Kaph — /k/ ou /x/
-
-Conseil : Commence par mémoriser la forme, puis le son !',
+ܟ Kaph — /k/ ou /x/',
   strftime('%s', 'now') * 1000
 ),
 (
@@ -105,40 +91,32 @@ Conseil : Commence par mémoriser la forme, puis le son !',
   'Les 11 dernières lettres de l''alphabet',
   5,
   'alphabet',
-  'Suite de l''alphabet syriaque :
-
-ܠ Lamadh — /l/
+  'ܠ Lamadh — /l/
 ܡ Mim — /m/
 ܢ Nun — /n/
 ܣ Semkath — /s/
 ܥ Ayin — /ʕ/ — son pharyngal
 ܦ Pe — /p/ ou /f/
-ܨ Sadhe — /sˤ/ — "s" emphatique
-ܩ Qaph — /q/ — "k" uvulaire
-ܪ Resh — /r/ — "r" roulé
+ܨ Sadhe — /sˤ/
+ܩ Qaph — /q/
+ܪ Resh — /r/
 ܫ Shin — /ʃ/ — comme "ch"
-ܬ Taw — /t/ ou /θ/
-
-Félicitations ! Vous connaissez maintenant les 22 lettres !',
+ܬ Taw — /t/ ou /θ/',
   strftime('%s', 'now') * 1000
 );
 
--- Vocabulary items
 INSERT OR IGNORE INTO vocabulary_items (id, soureth_word, latin_transcription, french_translation, example_sentence, category, lesson_id, created_at) VALUES
--- Salutations
 ('v-shlama', 'ܫܠܵܡܵܐ', 'shlama', 'paix / bonjour', 'ܫܠܵܡܵܐ، ܟܸܦ ܝܘܲܬ? — Bonjour, comment vas-tu ?', 'greetings', 'lesson-1', strftime('%s', 'now') * 1000),
 ('v-taw-ywen', 'ܛܵܒ݂ ܝܘܸܢ', 'taw ywen', 'je vais bien', NULL, 'greetings', 'lesson-1', strftime('%s', 'now') * 1000),
 ('v-kef-ywat', 'ܟܸܦ ܝܘܲܬ؟', 'kef ywat?', 'comment vas-tu ?', NULL, 'greetings', 'lesson-1', strftime('%s', 'now') * 1000),
 ('v-basim', 'ܒܵܣܸܡ', 'basim', 'bien / agréable', NULL, 'greetings', NULL, strftime('%s', 'now') * 1000),
 ('v-shlemta', 'ܫܠܡܬܵܐ', 'shlemta', 'au revoir', NULL, 'greetings', NULL, strftime('%s', 'now') * 1000),
--- Famille
 ('v-awa', 'ܐܵܒ݂ܵܐ', 'awa', 'père', 'ܐܵܒ݂ܝ ܒܪܝܼܟ ܝܠܹܗ — Mon père est béni', 'family', 'lesson-2', strftime('%s', 'now') * 1000),
 ('v-ima', 'ܐܸܡܵܐ', 'ima', 'mère', NULL, 'family', 'lesson-2', strftime('%s', 'now') * 1000),
 ('v-akha', 'ܐܵܚܵܐ', 'akha', 'frère', NULL, 'family', 'lesson-2', strftime('%s', 'now') * 1000),
 ('v-khata', 'ܚܵܬ݂ܵܐ', 'khata', 'sœur', NULL, 'family', 'lesson-2', strftime('%s', 'now') * 1000),
 ('v-bra', 'ܒܪܵܐ', 'bra', 'fils', NULL, 'family', 'lesson-2', strftime('%s', 'now') * 1000),
 ('v-brata', 'ܒܪܵܬ݂ܵܐ', 'brata', 'fille', NULL, 'family', 'lesson-2', strftime('%s', 'now') * 1000),
--- Chiffres
 ('v-khad', 'ܚܲܕ', 'khad', 'un (1)', NULL, 'numbers', 'lesson-3', strftime('%s', 'now') * 1000),
 ('v-trey', 'ܬܪܹܝ', 'trey', 'deux (2)', NULL, 'numbers', 'lesson-3', strftime('%s', 'now') * 1000),
 ('v-tlat', 'ܬܠܵܬ݂', 'tlat', 'trois (3)', NULL, 'numbers', 'lesson-3', strftime('%s', 'now') * 1000),
@@ -149,18 +127,13 @@ INSERT OR IGNORE INTO vocabulary_items (id, soureth_word, latin_transcription, f
 ('v-tmanya', 'ܬܡܵܢܝܵܐ', 'tmanya', 'huit (8)', NULL, 'numbers', 'lesson-3', strftime('%s', 'now') * 1000),
 ('v-tsha', 'ܬܫܲܥ', 'tsha', 'neuf (9)', NULL, 'numbers', 'lesson-3', strftime('%s', 'now') * 1000),
 ('v-sar', 'ܥܣܵܪ', 'sar', 'dix (10)', NULL, 'numbers', 'lesson-3', strftime('%s', 'now') * 1000),
--- Nourriture
 ('v-lakhma', 'ܠܲܚܡܵܐ', 'lakhma', 'pain', 'ܠܲܚܡܵܐ ܒܵܣܸܡ — Le pain est bon', 'food', NULL, strftime('%s', 'now') * 1000),
 ('v-maya', 'ܡܲܝܵܐ', 'maya', 'eau', NULL, 'food', NULL, strftime('%s', 'now') * 1000),
--- Nature
 ('v-shimsha', 'ܫܸܡܫܵܐ', 'shimsha', 'soleil', NULL, 'nature', NULL, strftime('%s', 'now') * 1000),
 ('v-sahra', 'ܣܲܗܪܵܐ', 'sahra', 'lune', NULL, 'nature', NULL, strftime('%s', 'now') * 1000),
 ('v-nura', 'ܢܘܼܪܵܐ', 'nura', 'feu', NULL, 'nature', NULL, strftime('%s', 'now') * 1000),
--- Verbes
 ('v-azal', 'ܐܵܙܲܠ', 'azal', 'aller', 'ܐܵܙܲܠ ܝܘܸܢ ܠܒܲܝܬܵܐ — Je vais à la maison', 'verbs', NULL, strftime('%s', 'now') * 1000),
 ('v-ate', 'ܐܵܬܹܐ', 'ate', 'venir', NULL, 'verbs', NULL, strftime('%s', 'now') * 1000),
--- Adjectifs
 ('v-tawa', 'ܛܵܒ݂ܵܐ', 'tawa', 'bon / bien', 'ܐܵܠܵܗܵܐ ܛܵܒ݂ — Dieu est bon', 'adjectives', NULL, strftime('%s', 'now') * 1000),
 ('v-bisha', 'ܒܝܼܫܵܐ', 'bisha', 'mauvais', NULL, 'adjectives', NULL, strftime('%s', 'now') * 1000),
--- Phrases
 ('v-alaha', 'ܐܲܠܵܗܵܐ', 'alaha', 'Dieu', 'ܐܲܠܵܗܵܐ ܒܪܝܼܟ — Dieu est béni', 'phrases', NULL, strftime('%s', 'now') * 1000);
